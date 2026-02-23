@@ -1,0 +1,43 @@
+services:
+  content-db:
+    image: mysql:8.0
+    container_name: content-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: content_db
+      MYSQL_USER: content_user
+      MYSQL_PASSWORD: content_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - content-db-data:/var/lib/mysql
+      - ./content-db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "content_user", "-pcontent_pass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  publishing-db:
+    image: postgres:16
+    container_name: publishing-db
+    environment:
+      POSTGRES_DB: publishing_db
+      POSTGRES_USER: publishing_user
+      POSTGRES_PASSWORD: publishing_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - publishing-db-data:/var/lib/postgresql/data
+      - ./publishing-db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U publishing_user -d publishing_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  content-db-data:
+  publishing-db-data:

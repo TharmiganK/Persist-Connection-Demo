@@ -141,8 +141,8 @@ Repeat the same steps for the publishing database:
 }
 ```
 
-8. Set the **Type Name** to `PublishSuccessResponse` and click `Import`.
-9. Select `PublishSuccessResponse` as the **Response Body Schema**. Check **Make This Response Reusable**, set the **Response Definition Name** to `PublishSuccessResponse`, and click `Save`.
+8. Set the **Type Name** to `PublishSuccess` and click `Import`.
+9. Select `PublishSuccess` as the **Response Body Schema**. Check **Make This Response Reusable**, set the **Response Definition Name** to `PublishSuccessResponse`, and click `Save`.
 10. Click `+ Response` to add the following additional responses. Use the JSON schema below to create the `ErrorMessage` type when prompted:
 
 | Status Code | Description | Response Body Schema | Response Definition Name |

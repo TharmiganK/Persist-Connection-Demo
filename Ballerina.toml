@@ -11,20 +11,14 @@ sticky = true
 [[dependency]]
 org = "ballerina"
 name = "tool.persist"
-version = "1.9.0"
-
-[[dependency]]
-org = "ballerinax"
-name = "persist.sql"
-version = "1.7.2"
-repository = "local"
+version = "1.9.1"
 
 [[tool.persist]]
 id = "persist_connection_demo.publishingDB"
 targetModule = "persist_connection_demo.publishingDB"
 filePath = "persist/publishingDB/model.bal"
 options.datastore = "postgresql"
-# options.eagerLoading = true
+options.eagerLoading = true
 options.withInitParams = true
 
 [[tool.persist]]
@@ -38,6 +32,4 @@ options.withInitParams = true
 [[platform.java21.dependency]]
 groupId = "io.ballerina.stdlib"
 artifactId = "persist.sql-native"
-version = "1.7.2-SNAPSHOT"
-path = "/Users/tharmigan/.m2/repository/io/ballerina/stdlib/persist.sql-native/1.7.2-SNAPSHOT/persist.sql-native-1.7.2-SNAPSHOT.jar"
-
+version = "1.7.2"

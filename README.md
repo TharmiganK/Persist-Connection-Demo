@@ -83,6 +83,11 @@ publishing-db PostgreSQL localhost:5433   db=publishing_db  user=publishing_user
 6. In the **Select Tables** form, select all tables and click `Continue to Connection Details`.
 7. In the **Create Connection** form, set the **Connection Name** to `contentDB` and click `Save Connection`.
 
+### Step 1.1 - Visualize the database schema
+
+1. Click on the created `contentDB` connection to open its details page.
+2. CLick on **View ER Diagram** to see the visual representation of the database schema, including the relationships between `drafts`, `authors`, and `tags`.
+
 ---
 
 ## Step 2 — Create the Publishing DB connector (PostgreSQL)

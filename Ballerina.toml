@@ -8,6 +8,14 @@ title = "Persist Connection Demo"
 [build-options]
 sticky = true
 
+[[tool.persist]]
+id = "persist_connection_demo.contentDB"
+targetModule = "persist_connection_demo.contentDB"
+filePath = "persist/contentDB/model.bal"
+options.datastore = "mysql"
+options.eagerLoading = true
+options.withInitParams = true
+
 [[dependency]]
 org = "ballerina"
 name = "tool.persist"
@@ -21,15 +29,8 @@ options.datastore = "postgresql"
 options.eagerLoading = true
 options.withInitParams = true
 
-[[tool.persist]]
-id = "persist_connection_demo.contentDB"
-targetModule = "persist_connection_demo.contentDB"
-filePath = "persist/contentDB/model.bal"
-options.datastore = "mysql"
-options.eagerLoading = true
-options.withInitParams = true
-
 [[platform.java21.dependency]]
 groupId = "io.ballerina.stdlib"
 artifactId = "persist.sql-native"
 version = "1.7.2"
+

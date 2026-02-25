@@ -16,19 +16,9 @@ public type TagsItem record {|
 public type Tags TagsItem[];
 
 public type PublishSuccess record {|
-    string postId;
     string title;
     Author author;
     Tags tags;
-    string publishedAt;
-|};
-
-public type PublishSuccessResponse record {|
-    *http:Ok;
-    PublishSuccess body;
-    record {|
-        (string|int|boolean|string[]|int[]|boolean[])...;
-    |} headers?;
 |};
 
 public type Error record {|
@@ -38,6 +28,14 @@ public type Error record {|
 
 public type ErrorMessage record {|
     Error 'error;
+|};
+
+public type PublishSuccessResponse record {|
+    *http:Created;
+    PublishSuccess body;
+    record {|
+        (string|int|boolean|string[]|int[]|boolean[])...;
+    |} headers?;
 |};
 
 public type DraftNotFound record {|
@@ -56,19 +54,19 @@ public type PublishConflict record {|
     |} headers?;
 |};
 
-public type DraftType record {|
-    DraftAuthorType author;
+public type DraftsType record {|
+    DraftsAuthorType author;
+    DraftsTagsType[] tags;
     string title;
     string body;
     string status;
-    DraftTagsType[] tags;
 |};
 
-public type DraftAuthorType record {|
+public type DraftsTagsType record {|
+    string label;
+|};
+
+public type DraftsAuthorType record {|
     string name;
     string email;
-|};
-
-public type DraftTagsType record {|
-    string label;
 |};
